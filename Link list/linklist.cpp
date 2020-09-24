@@ -34,16 +34,10 @@ void push(int data){
 }
 
 
+int wrong=0; 
 
-void display(){
-  Node* temp = head;
-  while(temp!=NULL){
-    cout<<temp->data<<"->";
-    temp= temp->next;
-  }
-  cout<<"Null"<<endl;
-}
 
+//define globally(wrong) , so that if anything wrong then display show error; 
 
 void InsertAfter(int p , int data){
   Node* NewNode = new Node();
@@ -58,7 +52,8 @@ void InsertAfter(int p , int data){
     temp = temp->next;
   }
   if(temp==NULL){
-    cout<<"Galat hai";
+    wrong++;
+    return;
   }
   NewNode->next = temp->next;
   temp->next =  NewNode;
@@ -66,6 +61,19 @@ void InsertAfter(int p , int data){
 }
 
 
+void display(){
+  Node* temp = head;
+  if(wrong==0){
+
+    while(temp!=NULL){
+      cout<<temp->data<<"->";
+      temp= temp->next;
+    }
+    cout<<"Null"<<endl;
+  }
+  else
+    cout<<"something wrong"<<endl;
+}
 
 int main(){
   for(int i = 1; i<=6; ++i){
