@@ -60,6 +60,17 @@ void InsertAfter(int p , int data){
 
 }
 
+void DeleteNode(int p){
+  Node* temp = head;
+  if(p==1){
+    head = temp->next;
+  }
+  for(int i=2; i<p; ++i){
+    temp = temp->next;
+  }
+  temp->next = temp->next->next;
+}
+
 
 void display(){
   Node* temp = head;
@@ -79,6 +90,7 @@ int main(){
   for(int i = 1; i<=6; ++i){
     append(i);
   }
-  InsertAfter(7,8);
+  InsertAfter(6,8);
+  DeleteNode(1);
   display();
 }
