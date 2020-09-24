@@ -86,11 +86,22 @@ void display(){
     cout<<"something wrong"<<endl;
 }
 
+void count(){
+  Node* temp = head;
+  int count=0;
+  while(temp!=NULL){
+    temp = temp->next;
+    count++;
+  }
+  cout<<count<<endl;
+}
+
 int main(){
-  for(int i = 1; i<=6; ++i){
+  for(int i = 1; i<=25; ++i){
     append(i);
   }
-  InsertAfter(6,8);
-  DeleteNode(1);
+  // InsertAfter(6,8);
+  // DeleteNode(1);
   display();
+  count();
 }
