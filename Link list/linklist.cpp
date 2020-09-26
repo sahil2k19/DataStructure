@@ -9,6 +9,7 @@ class Node{
 
 Node* head=NULL;
 
+// appending the node ; 
 void append(int data){
   Node* NewNode = new Node();
   Node* temp = head;
@@ -24,7 +25,7 @@ void append(int data){
   temp->next = NewNode;
 
 }
-
+// pushing the node ;
 void push(int data){
   Node* NewNode = new Node();
   NewNode->next = head;
@@ -34,11 +35,11 @@ void push(int data){
 }
 
 
+//define globally(wrong) , so that if anything wrong then display show error; 
 int wrong=0; 
 
 
-//define globally(wrong) , so that if anything wrong then display show error; 
-
+// insert after the link list ;
 void InsertAfter(int p , int data){
   Node* NewNode = new Node();
   Node* temp = head;
@@ -60,6 +61,7 @@ void InsertAfter(int p , int data){
 
 }
 
+// deleting the node;
 void DeleteNode(int p){
   Node* temp = head;
   if(p==1){
@@ -71,7 +73,7 @@ void DeleteNode(int p){
   temp->next = temp->next->next;
 }
 
-
+// printing the node;
 void display(){
   Node* temp = head;
   if(wrong==0){
@@ -86,6 +88,8 @@ void display(){
     cout<<"something wrong"<<endl;
 }
 
+
+// finding the legth of linklist ;
 void count(){
   Node* temp = head;
   int count=0;
@@ -96,12 +100,32 @@ void count(){
   cout<<count<<endl;
 }
 
+
+// reverse the linklist iterative method;
+
+void reverseLinkList(){
+  
+  Node *PrevNode , *CurrentNode, *NextNode;
+  PrevNode = NULL;
+  CurrentNode = NextNode = head;
+  while(NextNode!=NULL){
+    NextNode = NextNode->next;
+    CurrentNode->next = PrevNode;
+    PrevNode = CurrentNode;
+    CurrentNode = NextNode; 
+  }
+  head = PrevNode;
+}
+
+
 int main(){
-  for(int i = 1; i<=25; ++i){
+  for(int i = 1; i<=10; ++i){
     append(i);
   }
   // InsertAfter(6,8);
   // DeleteNode(1);
   display();
-  count();
+  reverseLinkList();
+  display();
+  // count();
 }
